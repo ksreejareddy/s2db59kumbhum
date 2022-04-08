@@ -1,0 +1,33 @@
+extends layout
+
+
+
+block content
+
+  h1= title
+
+  p Welcome to #{title} page
+
+  p I thing something is going to happen
+
+  button(type="button", class="btn btn-success" onclick="moreClaps()") PressMe
+
+  div(id="target") Clap for me
+
+  a(href="Elephant") Elephant Link
+
+  script.
+
+    var clap_count = 0;
+
+    function moreClaps() {
+
+    clap_count = clap_count+2;
+
+    console.log("moreClaps method implemented");
+
+    document.getElementById("target").innerHTML="Clap "+clap_count +" times";
+
+    }
+
+   
