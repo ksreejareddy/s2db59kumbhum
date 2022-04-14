@@ -14,44 +14,10 @@ block content
 
             -
 
-                let piemagic = [
-
-                    {
-
-                        "Elephant_breed": "Indian Elephant",
-
-                        "Elephant_color": "black",
-
-                        "Elephant_height": 18
-
-                    },
-
-                    {
-
-                        "Elephant_breed": "Asian Elephant",
-
-                        "Elephant_color": "White",
-
-                        "Elephant_height": 15
-
-
-                    },             
-                     {
-
-                       "Elephant_breed": "African Elephant",
-
-                        "Elephant_color": "Grey",
-
-                        "Elephant_height": 25
-
-
-                    },                  
-
-                ]
-
+                let piemagic = theElephant
             each v,index in piemagic
 
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.Elephant_breed} - #{v.Elephant_color} - #{v.Elephant_height}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.breed} - #{v.color} - #{v.height}
 
   script.                
 
