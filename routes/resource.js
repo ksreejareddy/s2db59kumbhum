@@ -28,8 +28,4 @@ router.get('/elephants/:id', elephant_controller.Elephant_detail);
 // GET request for list of all Costume items. 
 router.get('/elephants', elephant_controller.Elephant_list); 
  
-
-
-/* GET costumes */ 
-router.get('/', elephant_controller.elephant_view_all_Page ); 
 module.exports = router;

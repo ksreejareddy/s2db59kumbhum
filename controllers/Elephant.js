@@ -12,10 +12,19 @@ exports.Elephant_list = async function(req, res) {
     }   
 }; 
  
-// for a specific Elephant. 
-exports.Elephant_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Elephant detail: ' + req.params.id); 
+// for a specific Costume. 
+exports.Elephant_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await Elephant.findById( req.params.id) 
+        res.send(result) 
+    }
+    catch (err) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
 }; 
+ 
  
 // Handle Elephant create on POST. 
 exports.Elephant_create_post = async function(req, res) { 
@@ -31,7 +40,7 @@ exports.Elephant_create_post = async function(req, res) {
     try{ 
         let result = await document.save(); 
         res.send(result); 
-    } 
+        } 
     catch(err){ 
         res.status(500); 
         res.send(`{"error": ${err}}`); 
@@ -39,7 +48,7 @@ exports.Elephant_create_post = async function(req, res) {
 }; 
  
 // Handle Elephant delete form on DELETE. 
-exports.Elephant_delete = function(req, res) { 
+exports.Elephant_delete = function(req, res) {
     res.send('NOT IMPLEMENTED: Elephant delete DELETE ' + req.params.id); 
 }; 
  
