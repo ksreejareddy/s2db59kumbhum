@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let id  = toShow._id 
+  - let breed = toShow.breed 
+  - let color = toShow.color  
+  - let height  = toShow.height 
+  div 
+    div.row 
+      div(class='elephantAttr mr-3') Elephant ID is: 
+      div #{id} 
+    div.row 
+      div(class='elephantAttr mr-3') Elephant Breed  is: 
+      div #{breed} 
+    div.row 
+      div(class='elephantAttr mr-3') Elephant Colour  is: 
+      div #{color} 
+    div.row 
+      div(class='elephantAttr mr-3') Elephant Height is: 
+      div #{height} 
