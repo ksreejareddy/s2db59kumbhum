@@ -109,3 +109,42 @@ exports.elephant_view_all_Page = async function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 }; 
+// Handle building the view for creating a elephant. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.elephant_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('elephantcreate', { title: 'Elephant Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+// Handle building the view for updating a elephant. 
+// query provides the id 
+exports.elephant_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await Elephant.findById(req.query.id) 
+        res.render('elephantupdate', { title: 'Elephant Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+// Handle a delete one view with id from query 
+exports.elephant_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await Elephant.findById(req.query.id) 
+        res.render('elephantdelete', { title: 'elephant Delete', toShow: 
+result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 

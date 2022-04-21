@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+   - let id  = toShow._id 
+  - let breed = toShow.breed 
+  - let color = toShow.color  
+  - let height  = toShow.height 
+
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{id} 
+  - let actionid = "/resource/elephants/" + id 
+  form(id='ElephantForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.elephantAttr(for='breed') breed 
+        input#breed(type='text', name='breed', value= breed ) 
+    div.form-group 
+        label.elephantAttr(for='color') color  
+        input#color(type='text', name='color', value= color ) 
+    div.form-group 
+        label.elephantAttr(for='height') height
+        input#height(type='number', name='height', value= height ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['ElephantForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.text(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    });
