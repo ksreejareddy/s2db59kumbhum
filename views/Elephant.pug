@@ -1,30 +1,33 @@
 extends layout
 
-
-
 block content
-
   h1= title
-
-  p Welcome to the Elephant World
-
+  - let elephants=results
+  - let destinationcreate = `dispatchCreate(\"/elephants/create\")`
   div(class="container-fluid")
-
-        div(class="row")
-
-            -
-
-                let piemagic = theElephant
-                 each v,index in piemagic
-
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.breed} - #{v.color} - #{v.height}
-
-  script.                
-
-        function buy(intemNo)
-
-        {
-
-              alert(`you purchased Item ${intemNo+1}`)
-
-        }
+    button.btn( class="btn-primary ml-1 btn-lg", onclick= destinationcreate) Create
+  div(class="row m-1")
+   
+    each elephant,index in elephants 
+      - let destinationupdate = `dispatch(\"/elephants/update?id=${elephant._id}\")`
+      -let destinationdetail =   `dispatch(\"/elephants/detail?id=${elephant._id}\")`
+      - let destinationdelete = `dispatchDelete(\"/elephants/delete?id=${elephant._id}\")`
+        div(class="col-sm-4  m-1" style=("font-weight:bolder")) #{elephant.breed} - #{elephant.color} - #{elephant.height}
+          button.btn( class="btn-success ml-1", onclick= destinationdetail) Detail
+          button.btn( class="btn-info ml-1", onclick= destinationupdate) Update
+          button.btn( class="btn-danger ml-1", onclick= destinationdelete) Delete
+  script.
+      function dispatch(path){
+      window.location.href=path
+      }
+      
+      function ride(rides)
+      {
+        alert(`your booking rides count: ${rides+1}`)
+      }
+      function dispatchCreate(path){
+        window.location.href=path
+      }
+      function dispatchDelete(path){
+        window.location.href=path
+      }
