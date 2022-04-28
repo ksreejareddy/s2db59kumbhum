@@ -8,16 +8,16 @@ block content
      - let id  = toShow._id 
      - let breed = toShow.breed 
      - let color = toShow.color  
-     - let height  = toShow.height 
+     - let height  = toShow.height  
 
        div.row(class='mb-2') 
          div.mr-1 ID is 
          div #{id} 
-         - let actionid = "/resource/elephants/" + id 
-       form(id='ElephantForm', action= actionid, method="PUT") 
+         - let actionid = "/resource/elephant/" + id 
+       form(id='elephantForm', action= actionid, method="PUT") 
          div.form-group 
-            label.elephantAttr(for='breed') breed 
-           input#breed(type='text', name='breed', value= breed ) 
+            label.eAttr(for='name') name 
+           input#name(type='text', name='name', value= name ) 
          div.form-group 
             label.elephantAttr(for='color') color  
            input#color(type='text', name='color', value= color ) 

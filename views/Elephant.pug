@@ -10,12 +10,13 @@ block content
    
     each elephant,index in elephants 
       - let destinationupdate = `dispatch(\"/elephants/update?id=${elephant._id}\")`
-      -let destinationdetail =   `dispatch(\"/elephants/detail?id=${elephant._id}\")`
-      - let destinationdelete = `dispatchDelete(\"/elephants/delete?id=${elephant._id}\")`
         div(class="col-sm-4  m-1" style=("font-weight:bolder")) #{elephant.breed} - #{elephant.color} - #{elephant.height}
-          button.btn( class="btn-success ml-1", onclick= destinationdetail) Detail
-          button.btn( class="btn-info ml-1", onclick= destinationupdate) Update
-          button.btn( class="btn-danger ml-1", onclick= destinationdelete) Delete
+          
+       button.btn( class="btn-primary " class="m-1" class="btn-toolbar", onclick= destinationcreate) Create
+
+       button.btn( class="btn-danger" class="m-1" class="btn-toolbar", onclick= destinationdelete) Delete
+
+      button.btn( class="btn-primary"  class="m-1" class="btn-toolbar", onclick= destination) Update
   script.
       function dispatch(path){
       window.location.href=path
